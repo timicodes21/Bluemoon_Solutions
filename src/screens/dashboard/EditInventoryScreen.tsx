@@ -13,7 +13,7 @@ import PrimaryButton from "../../components/atoms/buttons/PrimaryButton";
 import { loginStyles } from "../../styles/auth/loginStyles";
 import DeleteButton from "../../components/atoms/buttons/DeleteButton";
 import { useRoute } from "@react-navigation/native";
-import { EditScreenProps, EditScreenRouteProp } from "../../types/navigators";
+import { EditScreenRouteProp } from "../../types/navigators";
 import { useEdit } from "../../hooks/home/useEdit";
 import CustomModal from "../../components/molecules/modals/CustomModal";
 
@@ -24,8 +24,6 @@ const EditInventoryScreen = () => {
   const route = useRoute<EditScreenRouteProp>();
 
   const { name, description, price, totalStock } = route.params;
-
-  console.log({ name, description, price, totalStock });
 
   const {
     control,
@@ -41,7 +39,7 @@ const EditInventoryScreen = () => {
       <View>
         <CreateHeader goBack={navigate} />
       </View>
-      <Text style={styles.headerText}>Edit Inventory</Text>
+      <Text style={styles.headerText}>Edit Item</Text>
       <View style={{ ...loginStyles.shadowWrapper, marginBottom: 100 }}>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -54,7 +52,7 @@ const EditInventoryScreen = () => {
               defaultValue={name}
               render={({ field: { onChange, value, onBlur } }) => (
                 <AuthInput
-                  label="Name"
+                  label="Item Name"
                   placeholder=""
                   onBlur={onBlur}
                   onChange={(value: string) => onChange(value)}

@@ -18,16 +18,9 @@ export const useEdit = () => {
 
   const { inventoryId } = route.params;
 
-  console.log("inventory id hook", inventoryId);
-
   const otherInventories = useOtherInventories(inventoryId);
   const selectedInventory = useFindInventory(inventoryId);
 
-  console.log(
-    "other inventories and selectde",
-    otherInventories,
-    selectedInventory
-  );
   const { setInventories, email } = useGlobalContext();
 
   const user = useFindUser(email);

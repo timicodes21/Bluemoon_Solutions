@@ -28,7 +28,7 @@ const CreateInventoryScreen = () => {
       <View>
         <CreateHeader goBack={navigate} />
       </View>
-      <Text style={styles.headerText}>Add Inventory</Text>
+      <Text style={styles.headerText}>Add Item</Text>
       <View style={{ ...loginStyles.shadowWrapper, marginBottom: 100 }}>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -40,7 +40,7 @@ const CreateInventoryScreen = () => {
               name="name"
               render={({ field: { onChange, value, onBlur } }) => (
                 <AuthInput
-                  label="Name"
+                  label="Item Name"
                   placeholder=""
                   onBlur={onBlur}
                   onChange={(value: string) => onChange(value)}
