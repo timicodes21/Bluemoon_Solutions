@@ -1,20 +1,54 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { MainStackParamList } from "./src/types/navigators";
+import { useFonts } from "expo-font";
+import CustomStatusBar from "./src/components/molecules/statusBar/CustomStatusBar";
+import SplashScreen from "./src/screens/auth/SplashScreen";
+import LoginScreen from "./src/screens/auth/LoginScreen";
+import HomeScreen from "./src/screens/dashboard/HomeScreen";
+import CreateInventoryScreen from "./src/screens/dashboard/CreateInventoryScreen";
 
 export default function App() {
+  const Stack = createStackNavigator<MainStackParamList>();
+  const [loaded] = useFonts({
+    poppins: require("./assets/fonts/Poppins-Regular.ttf"),
+    poppinsBold: require("./assets/fonts/Poppins-Bold.ttf"),
+    poppinsLight: require("./assets/fonts/Poppins-Light.ttf"),
+    poppinsMedium: require("./assets/fonts/Poppins-Medium.ttf"),
+    poppinsSemiBold: require("./assets/fonts/Poppins-SemiBold.ttf"),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Dashboard"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Splash"
+          component={SplashScreen}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="CreateInventory"
+          component={CreateInventoryScreen}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+      </Stack.Navigator>
+
+      <CustomStatusBar />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
