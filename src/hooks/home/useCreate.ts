@@ -4,9 +4,17 @@ import { z } from "zod";
 import { string, number } from "zod/lib";
 import { SubmitHandler } from "react-hook-form";
 import { CreateInventoryFormValues } from "../../types/formValues";
+import { useEmail, useFindUser } from "../utility/utility";
+import { useGlobalContext } from "../../contexts/user";
 
 export const useCreate = () => {
   const navigation = useNavigation<DashboardScreenNavigationProp>();
+
+  const { email } = useEmail();
+  const user = useFindUser(email);
+  const { users } = useGlobalContext();
+
+  console.log("all users", users);
 
   const navigate = () => {
     navigation.navigate("Dashboard");
@@ -19,9 +27,10 @@ export const useCreate = () => {
     description: string(),
   });
 
-  const onSubmit: SubmitHandler<CreateInventoryFormValues> = (data) => {
-    console.log("data", data);
-    navigate();
+  const onSubmit: SubmitHandler<CreateInventoryFormValues> = async (data) => {
+    console.log("user", user);
+
+    // navigate();
   };
 
   return { navigate, schema, onSubmit };
