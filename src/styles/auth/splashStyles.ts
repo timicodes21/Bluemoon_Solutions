@@ -5,5 +5,7 @@ export const splashStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F2F5FF",
     marginTop: 70,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

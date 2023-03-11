@@ -30,6 +30,11 @@ export default function App() {
       <GlobalProvider>
         <Stack.Navigator>
           <Stack.Screen
+            name="Splash"
+            component={SplashScreen}
+            options={{ headerShown: false }}
+          ></Stack.Screen>
+          <Stack.Screen
             name="Login"
             component={LoginScreen}
             options={{ headerShown: false }}
@@ -39,11 +44,7 @@ export default function App() {
             component={HomeScreen}
             options={{ headerShown: false }}
           ></Stack.Screen>
-          <Stack.Screen
-            name="Splash"
-            component={SplashScreen}
-            options={{ headerShown: false }}
-          ></Stack.Screen>
+
           <Stack.Screen
             name="CreateInventory"
             component={CreateInventoryScreen}

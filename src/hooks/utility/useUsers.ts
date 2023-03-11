@@ -3,6 +3,7 @@ import { retrieveInventories, _clearStorage } from "./../../utils/storage";
 import { useEffect, useState } from "react";
 import { IUser } from "../../types/details";
 import { retrieveUsers, storeUsers } from "../../utils/storage";
+import { useOtherUsers } from "./utility";
 
 export const useUsers = () => {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -24,8 +25,19 @@ export const useUsers = () => {
 
     // Return user if user exists in database
     if (userExists.length > 0) {
+      const otherUsers = users.filter(
+        (user) => user.userId !== userExists[0].userId
+      );
+      const user = users.find((user) => user?.userId === userExists[0].userId);
+      const newUser: IUser = {
+        email: user?.email ?? "",
+        userId: user?.userId ?? "",
+        isLoggedIn: true,
+      };
       setUserId(userExists[0].userId);
       setEmail(userExists[0].email);
+      storeUsers([newUser, ...otherUsers]);
+      setUsers([newUser, ...otherUsers]);
       return;
     }
 

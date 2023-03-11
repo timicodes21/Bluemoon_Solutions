@@ -24,7 +24,6 @@ const CreateInventoryScreen = () => {
     resolver: zodResolver(schema),
   });
 
-  console.log("errors", errors);
   return (
     <View style={styles.container}>
       <View>
