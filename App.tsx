@@ -8,6 +8,7 @@ import SplashScreen from "./src/screens/auth/SplashScreen";
 import LoginScreen from "./src/screens/auth/LoginScreen";
 import HomeScreen from "./src/screens/dashboard/HomeScreen";
 import CreateInventoryScreen from "./src/screens/dashboard/CreateInventoryScreen";
+import EditInventoryScreen from "./src/screens/dashboard/EditInventoryScreen";
 
 export default function App() {
   const Stack = createStackNavigator<MainStackParamList>();
@@ -44,6 +45,11 @@ export default function App() {
         <Stack.Screen
           name="CreateInventory"
           component={CreateInventoryScreen}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="EditInventory"
+          component={EditInventoryScreen}
           options={{ headerShown: false }}
         ></Stack.Screen>
       </Stack.Navigator>

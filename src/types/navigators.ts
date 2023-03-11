@@ -7,6 +7,7 @@ export type MainStackParamList = {
   Login: undefined;
   Dashboard: undefined;
   CreateInventory: undefined;
+  EditInventory: undefined;
 };
 
 // Navigation and Route Type

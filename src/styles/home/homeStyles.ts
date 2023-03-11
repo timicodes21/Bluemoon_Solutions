@@ -54,4 +54,24 @@ export const homeStyles = StyleSheet.create({
     fontWeight: "600",
     fontFamily: "poppins",
   },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    marginTop: 22,
+  },
+
+  modalView: {
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    backgroundColor: "rgba(255, 255, 255, 0.99)",
+    borderRadius: 10,
+    shadowColor: "rgba(0,0,0,0.3)",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 1,
+    elevation: 5,
+  },
 });
