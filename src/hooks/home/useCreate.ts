@@ -1,20 +1,22 @@
+import { IInventory, IUser } from "./../../types/details";
 import { useNavigation } from "@react-navigation/native";
 import { DashboardScreenNavigationProp } from "../../types/navigators";
 import { z } from "zod";
 import { string, number } from "zod/lib";
 import { SubmitHandler } from "react-hook-form";
 import { CreateInventoryFormValues } from "../../types/formValues";
-import { useEmail, useFindUser } from "../utility/utility";
+import { useEmail, useFindUser, useOtherUsers } from "../utility/utility";
 import { useGlobalContext } from "../../contexts/user";
 
 export const useCreate = () => {
   const navigation = useNavigation<DashboardScreenNavigationProp>();
 
   const { email } = useEmail();
-  const user = useFindUser(email);
+  const user: IUser | {} = useFindUser(email);
+  const otherUsers = useOtherUsers(email);
   const { users } = useGlobalContext();
 
-  console.log("all users", users);
+  console.log("loggedin user", user);
 
   const navigate = () => {
     navigation.navigate("Dashboard");
@@ -28,9 +30,11 @@ export const useCreate = () => {
   });
 
   const onSubmit: SubmitHandler<CreateInventoryFormValues> = async (data) => {
-    console.log("user", user);
-
-    // navigate();
+    const newInventory: IInventory = {
+      ...data,
+      inventoryId: Date.now().toString(),
+      userId: "",
+    };
   };
 
   return { navigate, schema, onSubmit };

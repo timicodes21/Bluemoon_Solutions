@@ -13,10 +13,10 @@ const GlobalContext = createContext({} as IGlobalContext);
 const useGlobalContext = () => useContext(GlobalContext);
 
 function GlobalProvider({ children }: PropsWithChildren) {
-  const { loginUser, users } = useUsers();
+  const { loginUser, users, inventories } = useUsers();
 
   return (
-    <GlobalContext.Provider value={{ users, loginUser }}>
+    <GlobalContext.Provider value={{ users, loginUser, inventories }}>
       {children}
     </GlobalContext.Provider>
   );

@@ -1,13 +1,18 @@
-import { _clearStorage } from "./../../utils/storage";
+import { IInventory } from "./../../types/details";
+import { retrieveInventories, _clearStorage } from "./../../utils/storage";
 import { useEffect, useState } from "react";
 import { IUser } from "../../types/details";
 import { retrieveUsers, storeUsers } from "../../utils/storage";
 
 export const useUsers = () => {
   const [users, setUsers] = useState<IUser[]>([]);
+  const [inventories, setInventories] = useState<IInventory[]>([]);
   useEffect(() => {
     retrieveUsers().then((data: IUser[]) => {
       setUsers(data);
+    });
+    retrieveInventories().then((data: IInventory[]) => {
+      setInventories(data);
     });
   }, []);
 
@@ -24,7 +29,6 @@ export const useUsers = () => {
     const details: IUser = {
       email,
       userId: Date.now().toString(),
-      inventories: [],
       isLoggedIn: true,
     };
 
@@ -43,6 +47,5 @@ export const useUsers = () => {
   };
 
   // Email of logged in user
-
-  return { loginUser, users, setUsers };
+  return { loginUser, users, setUsers, inventories };
 };
