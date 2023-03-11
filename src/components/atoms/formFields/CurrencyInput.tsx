@@ -52,7 +52,7 @@ export const CurrencyField: React.FC<IProps> = ({
         <CurrencyInput
           value={Number(value)}
           onChangeValue={onChange}
-          style={{ paddingHorizontal: 10, flexGrow: 1 }}
+          style={{ flexGrow: 1 }}
           placeholder={placeholder}
           keyboardType="numeric"
           placeholderTextColor="#B2BAD5"

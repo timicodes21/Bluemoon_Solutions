@@ -51,6 +51,7 @@ const AuthInput: React.FC<IProps> = ({
             fontSize: 16,
             fontWeight: "400",
             fontFamily: "poppins",
+            paddingVertical: 10,
           }}
         >
           {label}
@@ -68,9 +69,9 @@ const AuthInput: React.FC<IProps> = ({
           placeholder={placeholder}
           placeholderTextColor="#B2BAD5"
           style={{
-            paddingHorizontal: 10,
+            paddingHorizontal: leftIcon ? 10 : 0,
             flexGrow: 1,
-            textAlignVertical: "top",
+            textAlignVertical: multiLine ? "top" : "center",
           }}
           multiline={multiLine}
           numberOfLines={numberOfLines}

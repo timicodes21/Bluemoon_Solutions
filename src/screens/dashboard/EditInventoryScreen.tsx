@@ -18,8 +18,8 @@ import { useEdit } from "../../hooks/home/useEdit";
 import CustomModal from "../../components/molecules/modals/CustomModal";
 
 const EditInventoryScreen = () => {
-  const { schema } = useCreate();
-  const { navigate, onSubmit, onDelete, deleteOpen, setDeleteOpen } = useEdit();
+  const { navigate, onSubmit, onDelete, deleteOpen, setDeleteOpen, schema } =
+    useEdit();
 
   const route = useRoute<EditScreenRouteProp>();
 
@@ -82,8 +82,8 @@ const EditInventoryScreen = () => {
                 />
               )}
             />
-            {errors?.name && (
-              <InputErrorText text={errors?.name?.message ?? ""} />
+            {errors?.totalStock && (
+              <InputErrorText text={errors?.totalStock?.message ?? ""} />
             )}
           </>
           <>
@@ -101,8 +101,8 @@ const EditInventoryScreen = () => {
                 />
               )}
             />
-            {errors?.name && (
-              <InputErrorText text={errors?.name?.message ?? ""} />
+            {errors?.price && (
+              <InputErrorText text={errors?.price?.message ?? ""} />
             )}
           </>
           <>
@@ -123,8 +123,8 @@ const EditInventoryScreen = () => {
                 />
               )}
             />
-            {errors?.name && (
-              <InputErrorText text={errors?.name?.message ?? ""} />
+            {errors?.description && (
+              <InputErrorText text={errors?.description?.message ?? ""} />
             )}
           </>
           <View style={{ ...loginStyles.buttonContainer, marginBottom: 70 }}>
@@ -141,7 +141,7 @@ const EditInventoryScreen = () => {
       <CustomModal
         open={deleteOpen}
         setOpen={setDeleteOpen}
-        onPressBtn={handleSubmit(onDelete)}
+        onPressBtn={onDelete}
         closeModal={() => setDeleteOpen(false)}
         message="Are you sure you want to delete this inventory?"
       />

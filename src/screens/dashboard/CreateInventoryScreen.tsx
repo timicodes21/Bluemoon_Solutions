@@ -23,6 +23,8 @@ const CreateInventoryScreen = () => {
     mode: "all",
     resolver: zodResolver(schema),
   });
+
+  console.log("errors", errors);
   return (
     <View style={styles.container}>
       <View>
@@ -67,8 +69,8 @@ const CreateInventoryScreen = () => {
                 />
               )}
             />
-            {errors?.name && (
-              <InputErrorText text={errors?.name?.message ?? ""} />
+            {errors?.totalStock && (
+              <InputErrorText text={errors?.totalStock?.message ?? ""} />
             )}
           </>
           <>
@@ -85,8 +87,8 @@ const CreateInventoryScreen = () => {
                 />
               )}
             />
-            {errors?.name && (
-              <InputErrorText text={errors?.name?.message ?? ""} />
+            {errors?.price && (
+              <InputErrorText text={errors?.price?.message ?? ""} />
             )}
           </>
           <>
@@ -105,8 +107,8 @@ const CreateInventoryScreen = () => {
                 />
               )}
             />
-            {errors?.name && (
-              <InputErrorText text={errors?.name?.message ?? ""} />
+            {errors?.description && (
+              <InputErrorText text={errors?.description?.message ?? ""} />
             )}
           </>
           <View style={{ ...loginStyles.buttonContainer, marginBottom: 70 }}>

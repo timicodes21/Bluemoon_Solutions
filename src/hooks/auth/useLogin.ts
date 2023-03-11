@@ -11,14 +11,14 @@ export const useLogin = () => {
   const { loginUser } = useGlobalContext();
 
   const navigate = () => {
-    navigation.navigate("Dashboard");
+    navigation.replace("Dashboard");
   };
 
   const schema = z.object({
     email: z
       .string()
       .min(1, { message: "This field is required." })
-      .email("This is not a valid email."),
+      .email("Please enter a valid email"),
     password: string(),
   });
 

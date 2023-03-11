@@ -4,7 +4,6 @@ import { homeStyles as styles } from "../../styles/home/homeStyles";
 import HomeHeader from "../../components/organism/headers/HomeHeader";
 import InventoryCard from "../../components/molecules/cards/InventoryCard";
 import AddIconButton from "../../components/atoms/buttons/AddIconButton";
-import { inventories } from "../../data/inventories";
 import { useHome } from "../../hooks/home/useHome";
 import CustomModal from "../../components/molecules/modals/CustomModal";
 import { useUserInventories } from "../../hooks/utility/utility";
