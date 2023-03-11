@@ -47,5 +47,5 @@ export const useUsers = () => {
   };
 
   // Email of logged in user
-  return { loginUser, users, setUsers, inventories };
+  return { loginUser, users, setUsers, inventories, setInventories };
 };

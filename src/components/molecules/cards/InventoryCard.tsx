@@ -6,7 +6,8 @@ import { TableCellsIcon } from "react-native-heroicons/outline";
 import { toCurrency } from "../../../utils/formatter";
 import { IInventory } from "../../../types/details";
 
-interface IProps extends Omit<IInventory, "options"> {
+interface IProps
+  extends Omit<IInventory, "description" | "userId" | "inventoryId"> {
   onPress: () => void;
 }
 

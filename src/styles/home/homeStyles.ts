@@ -19,6 +19,13 @@ export const homeStyles = StyleSheet.create({
     fontFamily: "poppinsMedium",
     color: "#2E3A59",
   },
+  noText: {
+    fontSize: 20,
+    fontWeight: "600",
+    fontFamily: "poppins",
+    color: "#2E3A59",
+    textAlign: "center",
+  },
   cardWrapper: {
     borderRadius: 20,
     marginTop: 10,

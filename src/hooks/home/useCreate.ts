@@ -1,3 +1,4 @@
+import { useOtherInventories } from "./../utility/utility";
 import { IInventory, IUser } from "./../../types/details";
 import { useNavigation } from "@react-navigation/native";
 import { DashboardScreenNavigationProp } from "../../types/navigators";
@@ -7,14 +8,14 @@ import { SubmitHandler } from "react-hook-form";
 import { CreateInventoryFormValues } from "../../types/formValues";
 import { useEmail, useFindUser, useOtherUsers } from "../utility/utility";
 import { useGlobalContext } from "../../contexts/user";
+import { storeInventories } from "../../utils/storage";
 
 export const useCreate = () => {
   const navigation = useNavigation<DashboardScreenNavigationProp>();
 
   const { email } = useEmail();
-  const user: IUser | {} = useFindUser(email);
-  const otherUsers = useOtherUsers(email);
-  const { users } = useGlobalContext();
+  const user = useFindUser(email);
+  const { setInventories, inventories } = useGlobalContext();
 
   console.log("loggedin user", user);
 
@@ -33,8 +34,16 @@ export const useCreate = () => {
     const newInventory: IInventory = {
       ...data,
       inventoryId: Date.now().toString(),
-      userId: "",
+      userId: user.userId,
     };
+
+    const allInventories = [...inventories, newInventory];
+
+    await storeInventories(allInventories);
+    setInventories(allInventories);
+
+    navigate();
+    console.log("done");
   };
 
   return { navigate, schema, onSubmit };

@@ -7,9 +7,20 @@ import AddIconButton from "../../components/atoms/buttons/AddIconButton";
 import { inventories } from "../../data/inventories";
 import { useHome } from "../../hooks/home/useHome";
 import CustomModal from "../../components/molecules/modals/CustomModal";
+import { useUserId, useUserInventories } from "../../hooks/utility/utility";
+import { useGlobalContext } from "../../contexts/user";
 
 const HomeScreen = () => {
-  const { navigate, logoutOpen, setLogoutOpen, logoutUser } = useHome();
+  const { navigate, logoutOpen, setLogoutOpen, logoutUser, navigateToEdit } =
+    useHome();
+
+  const { inventories } = useGlobalContext();
+
+  const { userId } = useUserId();
+
+  const data = useUserInventories(userId);
+
+  console.log("user id", userId, inventories.length);
 
   return (
     <View style={styles.container}>
@@ -19,15 +30,23 @@ const HomeScreen = () => {
       <View>
         <Text style={styles.headerText}>Lists</Text>
       </View>
+
+      <View>
+        {data.length === 0 && (
+          <Text style={styles.noText}>You have no inventories</Text>
+        )}
+      </View>
+
       <FlatList
-        data={inventories}
+        data={data}
+        keyExtractor={(item) => item?.inventoryId}
         renderItem={(item) => (
           <InventoryCard
             key={item?.index}
             name={item?.item?.name}
             price={item?.item?.price}
             totalStock={item?.item?.totalStock}
-            onPress={() => navigate("EditInventory")}
+            onPress={() => navigateToEdit(item?.item)}
           />
         )}
         showsVerticalScrollIndicator={false}

@@ -12,9 +12,17 @@ import { CurrencyField } from "../../components/atoms/formFields/CurrencyInput";
 import PrimaryButton from "../../components/atoms/buttons/PrimaryButton";
 import { loginStyles } from "../../styles/auth/loginStyles";
 import DeleteButton from "../../components/atoms/buttons/DeleteButton";
+import { useRoute } from "@react-navigation/native";
+import { EditScreenProps, EditScreenRouteProp } from "../../types/navigators";
 
 const EditInventoryScreen = () => {
   const { navigate, schema, onSubmit } = useCreate();
+
+  const route = useRoute<EditScreenRouteProp>();
+
+  const { name, description, price, totalStock } = route.params;
+
+  console.log({ name, description, price, totalStock });
 
   const {
     control,
@@ -39,6 +47,7 @@ const EditInventoryScreen = () => {
             <Controller
               control={control}
               name="name"
+              defaultValue={name}
               render={({ field: { onChange, value, onBlur } }) => (
                 <AuthInput
                   label="Name"
@@ -57,6 +66,7 @@ const EditInventoryScreen = () => {
             <Controller
               control={control}
               name="totalStock"
+              defaultValue={totalStock}
               render={({ field: { onChange, value, onBlur } }) => (
                 <AuthInput
                   label="Total Stock"
@@ -75,6 +85,7 @@ const EditInventoryScreen = () => {
           <>
             <Controller
               control={control}
+              defaultValue={price}
               name="price"
               render={({ field: { onChange, value, onBlur } }) => (
                 <CurrencyField
@@ -94,6 +105,7 @@ const EditInventoryScreen = () => {
             <Controller
               control={control}
               name="description"
+              defaultValue={description}
               render={({ field: { onChange, value, onBlur } }) => (
                 <AuthInput
                   label="Description"

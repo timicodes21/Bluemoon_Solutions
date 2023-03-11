@@ -1,22 +1,18 @@
-import {
-  createContext,
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, PropsWithChildren, useContext } from "react";
 import { useUsers } from "../hooks/utility/useUsers";
-import { IGlobalContext, IUser } from "../types/details";
+import { IGlobalContext } from "../types/details";
 import { _clearStorage, _retrieveData, _storeData } from "../utils/storage";
 
 const GlobalContext = createContext({} as IGlobalContext);
 const useGlobalContext = () => useContext(GlobalContext);
 
 function GlobalProvider({ children }: PropsWithChildren) {
-  const { loginUser, users, inventories } = useUsers();
+  const { loginUser, users, inventories, setInventories } = useUsers();
 
   return (
-    <GlobalContext.Provider value={{ users, loginUser, inventories }}>
+    <GlobalContext.Provider
+      value={{ users, loginUser, inventories, setInventories }}
+    >
       {children}
     </GlobalContext.Provider>
   );

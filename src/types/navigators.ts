@@ -1,13 +1,14 @@
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RouteProp } from "@react-navigation/native";
+import { IInventory } from "./details";
 
 export type MainStackParamList = {
   Splash: undefined;
   Login: undefined;
   Dashboard: undefined;
   CreateInventory: undefined;
-  EditInventory: undefined;
+  EditInventory: IInventory;
 };
 
 // Navigation and Route Type
@@ -33,4 +34,12 @@ export type CreateScreenNavigationProp = NativeStackNavigationProp<
   "CreateInventory"
 >;
 
-export type WelcomeScreenRouteProp = RouteProp<MainStackParamList, "Splash">;
+export type EditScreenRouteProp = RouteProp<
+  MainStackParamList,
+  "EditInventory"
+>;
+
+export type EditScreenProps = NativeStackScreenProps<
+  MainStackParamList,
+  "EditInventory"
+>;

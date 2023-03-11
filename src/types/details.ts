@@ -17,4 +17,5 @@ export interface IGlobalContext {
   users: IUser[];
   loginUser: (email: string) => Promise<void>;
   inventories: IInventory[];
+  setInventories: React.Dispatch<React.SetStateAction<IInventory[]>>;
 }
