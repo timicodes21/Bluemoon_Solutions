@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import Modal from "react-native-modal";
 import PrimaryButton from "../../atoms/buttons/PrimaryButton";
@@ -30,7 +30,6 @@ const CustomModal: React.FC<IProps> = ({
         setOpen(false);
       }}
       animationIn="fadeIn"
-      animationOut="fadeOut"
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>

@@ -22,7 +22,7 @@ export const loginStyles = StyleSheet.create({
     paddingVertical: 30,
   },
   headerText: {
-    fontSize: 32,
+    fontSize: 24,
     fontWeight: "600",
     fontFamily: "poppinsMedium",
     color: "#2E3A59",

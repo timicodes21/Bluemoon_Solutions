@@ -42,7 +42,6 @@ export const useCreate = () => {
     setInventories(allInventories);
 
     navigate();
-    console.log("done");
   };
 
   return { navigate, schema, onSubmit };

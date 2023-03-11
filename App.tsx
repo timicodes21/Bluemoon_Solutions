@@ -56,7 +56,6 @@ export default function App() {
           ></Stack.Screen>
         </Stack.Navigator>
       </GlobalProvider>
-
       <CustomStatusBar />
     </NavigationContainer>
   );

@@ -22,4 +22,5 @@ export interface IGlobalContext {
   userId: string;
   setUserId: React.Dispatch<React.SetStateAction<string>>;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
+  setUsers: React.Dispatch<React.SetStateAction<IUser[]>>;
 }

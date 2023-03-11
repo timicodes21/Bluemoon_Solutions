@@ -14,7 +14,7 @@ export const createStyles = StyleSheet.create({
     alignItems: "center",
   },
   headerText: {
-    fontSize: 32,
+    fontSize: 24,
     fontWeight: "600",
     fontFamily: "poppinsMedium",
     color: "#2E3A59",

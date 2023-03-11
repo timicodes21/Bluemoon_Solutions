@@ -16,23 +16,23 @@ function GlobalProvider({ children }: PropsWithChildren) {
     userId,
     setEmail,
     setUserId,
+    setUsers,
   } = useUsers();
 
+  const value: IGlobalContext = {
+    users,
+    loginUser,
+    inventories,
+    setInventories,
+    email,
+    userId,
+    setEmail,
+    setUserId,
+    setUsers,
+  };
+
   return (
-    <GlobalContext.Provider
-      value={{
-        users,
-        loginUser,
-        inventories,
-        setInventories,
-        email,
-        userId,
-        setEmail,
-        setUserId,
-      }}
-    >
-      {children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
 }
 

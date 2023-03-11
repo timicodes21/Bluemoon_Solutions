@@ -15,7 +15,6 @@ const HomeScreen = () => {
     useHome();
   const { inventories, email, userId } = useGlobalContext();
   const data = useUserInventories(userId);
-  console.log("user id email", userId, inventories.length, email);
 
   return (
     <View style={styles.container}>
@@ -23,7 +22,7 @@ const HomeScreen = () => {
         <HomeHeader logoutUser={() => setLogoutOpen(true)} />
       </View>
       <View>
-        <Text style={styles.headerText}>Lists</Text>
+        <Text style={styles.headerText}>Hi {email?.split("@")[0]}</Text>
       </View>
 
       <View>
