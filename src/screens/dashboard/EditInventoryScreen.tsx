@@ -14,9 +14,12 @@ import { loginStyles } from "../../styles/auth/loginStyles";
 import DeleteButton from "../../components/atoms/buttons/DeleteButton";
 import { useRoute } from "@react-navigation/native";
 import { EditScreenProps, EditScreenRouteProp } from "../../types/navigators";
+import { useEdit } from "../../hooks/home/useEdit";
+import CustomModal from "../../components/molecules/modals/CustomModal";
 
 const EditInventoryScreen = () => {
-  const { navigate, schema, onSubmit } = useCreate();
+  const { schema } = useCreate();
+  const { navigate, onSubmit, onDelete, deleteOpen, setDeleteOpen } = useEdit();
 
   const route = useRoute<EditScreenRouteProp>();
 
@@ -32,6 +35,7 @@ const EditInventoryScreen = () => {
     mode: "all",
     resolver: zodResolver(schema),
   });
+
   return (
     <View style={styles.container}>
       <View>
@@ -55,6 +59,7 @@ const EditInventoryScreen = () => {
                   onBlur={onBlur}
                   onChange={(value: string) => onChange(value)}
                   showLabel
+                  value={value}
                 />
               )}
             />
@@ -75,6 +80,7 @@ const EditInventoryScreen = () => {
                   onBlur={onBlur}
                   onChange={(value: string) => onChange(Number(value))}
                   keyboardType="numeric"
+                  value={String(value)}
                 />
               )}
             />
@@ -115,6 +121,7 @@ const EditInventoryScreen = () => {
                   onChange={(value: string) => onChange(value)}
                   multiLine
                   numberOfLines={10}
+                  value={value}
                 />
               )}
             />
@@ -127,10 +134,19 @@ const EditInventoryScreen = () => {
               Edit Inventory
             </PrimaryButton>
             <View style={{ marginTop: 10 }}></View>
-            <DeleteButton onPress={() => {}}>Delete</DeleteButton>
+            <DeleteButton onPress={() => setDeleteOpen(true)}>
+              Delete
+            </DeleteButton>
           </View>
         </ScrollView>
       </View>
+      <CustomModal
+        open={deleteOpen}
+        setOpen={setDeleteOpen}
+        onPressBtn={handleSubmit(onDelete)}
+        closeModal={() => setDeleteOpen(false)}
+        message="Are you sure you want to delete this inventory?"
+      />
     </View>
   );
 };

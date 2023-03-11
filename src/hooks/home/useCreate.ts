@@ -6,16 +6,15 @@ import { z } from "zod";
 import { string, number } from "zod/lib";
 import { SubmitHandler } from "react-hook-form";
 import { CreateInventoryFormValues } from "../../types/formValues";
-import { useEmail, useFindUser, useOtherUsers } from "../utility/utility";
+import { useFindUser, useOtherUsers } from "../utility/utility";
 import { useGlobalContext } from "../../contexts/user";
 import { storeInventories } from "../../utils/storage";
 
 export const useCreate = () => {
   const navigation = useNavigation<DashboardScreenNavigationProp>();
+  const { setInventories, inventories, email } = useGlobalContext();
 
-  const { email } = useEmail();
   const user = useFindUser(email);
-  const { setInventories, inventories } = useGlobalContext();
 
   console.log("loggedin user", user);
 

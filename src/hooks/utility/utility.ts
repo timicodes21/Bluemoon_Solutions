@@ -1,24 +1,6 @@
 import { useGlobalContext } from "../../contexts/user";
 import { IInventory, IUser } from "../../types/details";
 
-// Hook that generates logged in user's email
-export const useEmail = () => {
-  const { users } = useGlobalContext();
-  const email = users.filter((user) => {
-    return user.isLoggedIn ? user.email : "";
-  })[0].email;
-  return { email };
-};
-
-// Hook that generates logged in user's id
-export const useUserId = () => {
-  const { users } = useGlobalContext();
-  const userId = users.filter((user) => {
-    return user.isLoggedIn ? user.email : "";
-  })[0].userId;
-  return { userId };
-};
-
 // Hook that finds user and returns the user object based on the mail
 export const useFindUser = (email: string): IUser => {
   const { users } = useGlobalContext();

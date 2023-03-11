@@ -7,20 +7,15 @@ import AddIconButton from "../../components/atoms/buttons/AddIconButton";
 import { inventories } from "../../data/inventories";
 import { useHome } from "../../hooks/home/useHome";
 import CustomModal from "../../components/molecules/modals/CustomModal";
-import { useUserId, useUserInventories } from "../../hooks/utility/utility";
+import { useUserInventories } from "../../hooks/utility/utility";
 import { useGlobalContext } from "../../contexts/user";
 
 const HomeScreen = () => {
   const { navigate, logoutOpen, setLogoutOpen, logoutUser, navigateToEdit } =
     useHome();
-
-  const { inventories } = useGlobalContext();
-
-  const { userId } = useUserId();
-
+  const { inventories, email, userId } = useGlobalContext();
   const data = useUserInventories(userId);
-
-  console.log("user id", userId, inventories.length);
+  console.log("user id email", userId, inventories.length, email);
 
   return (
     <View style={styles.container}>

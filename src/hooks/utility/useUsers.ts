@@ -6,6 +6,8 @@ import { retrieveUsers, storeUsers } from "../../utils/storage";
 
 export const useUsers = () => {
   const [users, setUsers] = useState<IUser[]>([]);
+  const [email, setEmail] = useState("");
+  const [userId, setUserId] = useState("");
   const [inventories, setInventories] = useState<IInventory[]>([]);
   useEffect(() => {
     retrieveUsers().then((data: IUser[]) => {
@@ -22,6 +24,8 @@ export const useUsers = () => {
 
     // Return user if user exists in database
     if (userExists.length > 0) {
+      setUserId(userExists[0].userId);
+      setEmail(userExists[0].email);
       return;
     }
 
@@ -32,6 +36,9 @@ export const useUsers = () => {
       isLoggedIn: true,
     };
 
+    setUserId(details.userId);
+    setEmail(details.email);
+
     // Logout previous users
     const loggedOutUsers =
       users.length > 0
@@ -39,7 +46,6 @@ export const useUsers = () => {
             return { ...user, isLoggedIn: false };
           })
         : [];
-    console.log("logged out users", loggedOutUsers);
 
     // Add user to the database
     await storeUsers([...loggedOutUsers, details]);
@@ -47,5 +53,15 @@ export const useUsers = () => {
   };
 
   // Email of logged in user
-  return { loginUser, users, setUsers, inventories, setInventories };
+  return {
+    loginUser,
+    users,
+    setUsers,
+    inventories,
+    setInventories,
+    email,
+    userId,
+    setEmail,
+    setUserId,
+  };
 };
