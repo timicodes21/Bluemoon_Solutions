@@ -6,15 +6,16 @@ interface IProps {
   children: ReactNode;
   onPress: () => void;
   icon?: ReactNode;
+  small?: boolean;
 }
 
-const DeleteButton: React.FC<IProps> = ({ children, onPress, icon }) => {
+const DeleteButton: React.FC<IProps> = ({ children, onPress, icon, small }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={{
         width: "100%",
-        paddingVertical: 9,
+        paddingVertical: small ? 4 : 9,
         borderRadius: 10,
         flexDirection: "row",
         justifyContent: "center",

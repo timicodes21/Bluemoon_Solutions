@@ -8,6 +8,7 @@ interface IProps {
   outlined?: boolean;
   icon?: ReactNode;
   disabled?: boolean;
+  small?: boolean;
 }
 
 const PrimaryButton: React.FC<IProps> = ({
@@ -16,6 +17,7 @@ const PrimaryButton: React.FC<IProps> = ({
   outlined,
   icon,
   disabled,
+  small,
 }) => {
   return (
     <TouchableOpacity onPress={onPress}>
@@ -23,7 +25,7 @@ const PrimaryButton: React.FC<IProps> = ({
         colors={["#9C2CF3", "#3A49F9"]}
         style={{
           width: "100%",
-          paddingVertical: 10,
+          paddingVertical: small ? 6 : 10,
           borderRadius: 10,
           flexDirection: "row",
           justifyContent: "center",

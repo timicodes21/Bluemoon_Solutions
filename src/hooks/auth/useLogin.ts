@@ -4,9 +4,11 @@ import { string } from "zod/lib";
 import { SubmitHandler } from "react-hook-form";
 import { LoginFormValues } from "../../types/formValues";
 import { LoginScreenNavigationProp } from "../../types/navigators";
+import { useGlobalContext } from "../../contexts/user";
 
 export const useLogin = () => {
   const navigation = useNavigation<LoginScreenNavigationProp>();
+  const { loginUser } = useGlobalContext();
 
   const navigate = () => {
     navigation.navigate("Dashboard");
@@ -20,7 +22,8 @@ export const useLogin = () => {
     password: string(),
   });
 
-  const onSubmit: SubmitHandler<LoginFormValues> = (data) => {
+  const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
+    await loginUser(data?.email);
     navigate();
   };
 

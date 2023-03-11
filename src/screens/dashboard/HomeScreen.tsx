@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, FlatList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React from "react";
 import { homeStyles as styles } from "../../styles/home/homeStyles";
 import HomeHeader from "../../components/organism/headers/HomeHeader";
@@ -10,6 +10,7 @@ import CustomModal from "../../components/molecules/modals/CustomModal";
 
 const HomeScreen = () => {
   const { navigate, logoutOpen, setLogoutOpen, logoutUser } = useHome();
+
   return (
     <View style={styles.container}>
       <View>

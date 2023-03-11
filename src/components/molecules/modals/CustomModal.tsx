@@ -60,10 +60,14 @@ const CustomModal: React.FC<IProps> = ({
             }}
           >
             <View style={{ width: "30%", marginRight: 5 }}>
-              <PrimaryButton onPress={closeModal}>No</PrimaryButton>
+              <PrimaryButton onPress={closeModal} small>
+                No
+              </PrimaryButton>
             </View>
             <View style={{ width: "30%", marginLeft: 5 }}>
-              <DeleteButton onPress={onPressBtn}>Yes</DeleteButton>
+              <DeleteButton onPress={onPressBtn} small>
+                Yes
+              </DeleteButton>
             </View>
           </View>
         </View>

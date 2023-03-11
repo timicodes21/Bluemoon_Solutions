@@ -9,6 +9,7 @@ import LoginScreen from "./src/screens/auth/LoginScreen";
 import HomeScreen from "./src/screens/dashboard/HomeScreen";
 import CreateInventoryScreen from "./src/screens/dashboard/CreateInventoryScreen";
 import EditInventoryScreen from "./src/screens/dashboard/EditInventoryScreen";
+import { GlobalProvider } from "./src/contexts/user";
 
 export default function App() {
   const Stack = createStackNavigator<MainStackParamList>();
@@ -26,33 +27,35 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="Dashboard"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="Splash"
-          component={SplashScreen}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="CreateInventory"
-          component={CreateInventoryScreen}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="EditInventory"
-          component={EditInventoryScreen}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-      </Stack.Navigator>
+      <GlobalProvider>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="Dashboard"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="Splash"
+            component={SplashScreen}
+            options={{ headerShown: false }}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="CreateInventory"
+            component={CreateInventoryScreen}
+            options={{ headerShown: false }}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="EditInventory"
+            component={EditInventoryScreen}
+            options={{ headerShown: false }}
+          ></Stack.Screen>
+        </Stack.Navigator>
+      </GlobalProvider>
 
       <CustomStatusBar />
     </NavigationContainer>
