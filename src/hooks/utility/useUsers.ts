@@ -3,7 +3,6 @@ import { retrieveInventories, _clearStorage } from "./../../utils/storage";
 import { useEffect, useState } from "react";
 import { IUser } from "../../types/details";
 import { retrieveUsers, storeUsers } from "../../utils/storage";
-import { useOtherUsers } from "./utility";
 
 export const useUsers = () => {
   const [users, setUsers] = useState<IUser[]>([]);
