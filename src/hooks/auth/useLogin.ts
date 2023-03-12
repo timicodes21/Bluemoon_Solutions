@@ -1,10 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
-import { z } from "zod";
 import { string } from "zod/lib";
 import { SubmitHandler } from "react-hook-form";
 import { LoginFormValues } from "../../types/formValues";
 import { LoginScreenNavigationProp } from "../../types/navigators";
 import { useGlobalContext } from "../../contexts/user";
+import * as z from "zod";
 
 export const useLogin = () => {
   const navigation = useNavigation<LoginScreenNavigationProp>();
