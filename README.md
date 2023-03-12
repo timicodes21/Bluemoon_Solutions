@@ -1,4 +1,4 @@
-# Bluemoon Solutions Inventoey App
+# Bluemoon Solutions Inventory App
 
 This app is a simple and easy-to-use inventory management system that helps you keep track of your products and supplies. With this app, you can quickly and easily add, edit, and delete items in your inventory. Whether you're running a small shop or a large warehouse, this app is the perfect tool to help you manage your inventory more efficiently.
 
